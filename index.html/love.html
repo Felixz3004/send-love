@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>-ขอทำความรู้ได้ไหมครับ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Prompt', sans-serif;
+      background-color: #f09db9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      color: #333;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 30px;
+      margin-bottom: 20px;
+      animation: pulse 2s infinite;
+    }
+
+    .button-container {
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 12px 30px;
+      margin: 10px;
+      font-size: 18px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .yes {
+      background-color: #ff69b4;
+      color: white;
+    }
+
+    .no {
+      background-color: #d3d3d3;
+      color: #333;
+    }
+
+    .yes:hover {
+      background-color: #ff1493;
+    }
+
+    .no:hover {
+      background-color: #b0b0b0;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(-45deg);
+      animation: float 4s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(-45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-200px) rotate(-45deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    #message {
+      margin-top: 30px;
+      font-size: 22px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>ผมขอทำความรู้จักกับคุณได้ไหมครับ?<img src="love.png" alt="me" style="width:40px; vertical-align:middle;"></h1>
+
+  <div class="button-container">
+    <button class="yes" onclick="fallInLove()">ได้</button>
+    <button class="no" onclick="playHardToGet()">ไม่ได้</button>
+  </div>
+
+  <div id="message"></div>
+
+  <script>
+    function fallInLove() {
+      document.getElementById("message").innerHTML = "เย้! ดีใจมากเลยนะครับ <br>ขอบคุณที่อยากรู้จักนะครับ";
+      createHearts();
+    }
+
+    function playHardToGet() {
+      document.getElementById("message").innerHTML = "น้อยใจแล้วนะครับ <br>แต่ยังไงก็ขอบคุณนะครับที่ให้โอกาส";
+      document.body.style.backgroundColor = "#ffe4e1"; // สีชมพูซีด
+    }
+
+    function createHearts() {
+      for (let i = 0; i < 30; i++) {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.top = window.innerHeight + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 4000);
+      }
+    }
+  </script>
+
+</body>
+</html>
